@@ -1,6 +1,6 @@
 --take latest contact history to get the last update for the contact
 with contact_history as (
-  select 
+  select
   *,
   row_number() over (partition by contact_id order by updated_at desc) as rank_latest_contact_update
   from {{ ref('stg_intercom__contact_history') }}
@@ -11,7 +11,7 @@ contact_latest as (
   * except (rank_latest_contact_update)
   from contact_history
   where rank_latest_contact_update = 1
-)
+),
 
 --If you use the contact company table this will be included, if not it will be ignored.
 {% if var('using_contact_company', True) %}
