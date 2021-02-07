@@ -1,5 +1,5 @@
 packages:
   - git: "https://github.com/robertpknight/dbt_intercom_source.git"
-    revision: master
+    revision: thirdfort-master
   # - package: fivetran/intercom_source
   #   version: 0.1.1
